@@ -31,7 +31,7 @@ module.exports = function (params) {
 params.json
 ```json
 {
-  "title": "receiver.api.kassapodkontrolem.ru login params Schema",
+  "title": "login params json-chema",
   "type": "object",
   "required": [ "name", "password" ],
   "properties": {
@@ -82,7 +82,7 @@ module.exports = {
                 "required": ["code", "message"],
                 "properties": {
                     "code": {
-                        "enum": [10001]
+                        "enum": [404]
                     },
                     "message": {
                         "enum": ["Couldn't found account with that login and password"]
