@@ -28,7 +28,7 @@ module.exports = function (params) {
 };
 ```
 
-params.json
+auth/method/login/params.json
 ```json
 {
   "title": "login params json-chema",
@@ -45,7 +45,7 @@ params.json
 }
 ```
 
-auth/method/result.json:
+auth/method/login/result.json:
 ```json
 { "enum": [true] }
 ```
