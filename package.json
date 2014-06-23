@@ -1,0 +1,27 @@
+{
+  "name": "routing-json-schema",
+  "version": "0.0.0",
+  "description": "define routing using json schema",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com:Ti-webdev/node-routing-json-schema.git"
+  },
+  "keywords": [
+    "json",
+    "json-schema",
+    "routing"
+  ],
+  "author": "Ti.webdev",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Ti-webdev/node-routing-json-schema/issues"
+  },
+  "dependencies": {
+    "promise": "~5.0.0",
+    "z-schema": "~2.4.8"
+  }
+}
