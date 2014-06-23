@@ -1,6 +1,6 @@
 {
   "name": "routing-json-schema",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Define routing using json schema",
   "main": "index.js",
   "scripts": {
