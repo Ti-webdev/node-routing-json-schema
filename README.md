@@ -46,4 +46,4 @@ auth/method/login/error.json:
 auth/method/result.json:
 ```json
 { "enum": [true] }
-```json
+```
