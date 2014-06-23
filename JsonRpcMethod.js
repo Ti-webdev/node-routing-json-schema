@@ -35,7 +35,7 @@ JsonRpcMethod.prototype = {
 
   validateParams: function(params) {
     if ('undefined' === typeof this.schema.params) {
-      return params;
+      return Promise.resolve(params);
     }
     else {
       return validator.validate(1 < params.length ? params : params[0], this.schema.params)
