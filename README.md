@@ -3,6 +3,9 @@ node-routing-json-schema
 
 Define routing using json schema
 
+Load and validate params, result and error json-schema for each method of routing.
+
+
 ```javascript
 var RpcRouting = require('routing-json-schema');
 var rpcRouting = RpcRouting();
@@ -25,6 +28,27 @@ module.exports = function (params) {
 };
 ```
 
+params.json
+```json
+{
+  "title": "receiver.api.kassapodkontrolem.ru login params Schema",
+  "type": "object",
+  "required": [ "name", "password" ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
+  }
+}
+```
+
+auth/method/result.json:
+```json
+{ "enum": [true] }
+```
 
 auth/method/login/error.json:
 ```json
@@ -43,7 +67,32 @@ auth/method/login/error.json:
 }
 ```
 
-auth/method/result.json:
-```json
-{ "enum": [true] }
+or auth/method/login/error.js:
+```javascript
+module.exports = {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "allOf": [
+        require(__dirname+'/../../definitions/errors'),
+        {
+          "anyOf": [
+            require(__dirname+'/../../definitions/errors_connect'),
+            {
+                "type": "object",
+                "required": ["code", "message"],
+                "properties": {
+                    "code": {
+                        "enum": [10001]
+                    },
+                    "message": {
+                        "enum": ["Couldn't found account with that login and password"]
+                    }
+                }
+            },
+            require(__dirname+'/../../definitions/error_empty_login'),
+            require(__dirname+'/../../definitions/error_empty_password')
+          ]
+        }
+    ]
+};
 ```
