@@ -34,11 +34,12 @@ Routing.prototype = {
     var jsonRpcMethod = JsonRpcMethod(method);
 
     JsonRpcMethod.schemeNames.forEach(function(key) {
+      var module = path.join(filepath, key);
       try {
-        jsonRpcMethod.schema[key] = require(path.join(filepath, key));
+        jsonRpcMethod.schema[key] = require(module);
       }
       catch (e) {
-        if (e.code !== 'MODULE_NOT_FOUND') throw e;
+        if (e.code !== 'MODULE_NOT_FOUND' || e.toString() !== "Error: Cannot find module '"+module+"'") throw e;
       }
     });
 
