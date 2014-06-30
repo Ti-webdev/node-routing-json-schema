@@ -1,4 +1,4 @@
-var JsonRpcMethod = require(__dirname+'/JsonRpcMethod');
+var JsonRpcMethod = require('./JsonRpcMethod');
 
 var fs = require('fs');
 var path = require('path');
@@ -51,6 +51,5 @@ Routing.prototype = {
   }
 }
 
-module.exports = function() {
-  return new Routing;
-}
+module.exports = Routing;
+module.exports.JsonRpcError = require('./JsonRpcError')
