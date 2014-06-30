@@ -73,10 +73,10 @@ module.exports = {
     "$schema": "http://json-schema.org/draft-04/schema#",
 
     "allOf": [
-        require(__dirname+'/../../definitions/errors'),
+        require('./definitions/errors'),
         {
           "anyOf": [
-            require(__dirname+'/../../definitions/errors_connect'),
+            require('./definitions/errors_connect'),
             {
                 "type": "object",
                 "required": ["code", "message"],
@@ -89,8 +89,8 @@ module.exports = {
                     }
                 }
             },
-            require(__dirname+'/../../definitions/error_empty_login'),
-            require(__dirname+'/../../definitions/error_empty_password')
+            require('./definitions/error_empty_login'),
+            require('./definitions/error_empty_password')
           ]
         }
     ]
