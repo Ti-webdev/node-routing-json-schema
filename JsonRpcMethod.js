@@ -38,11 +38,13 @@ JsonRpcMethod.prototype = {
       return Promise.resolve(params);
     }
     else {
+      var self = this;
       return validator.validate(1 < params.length ? params : params[0], this.schema.params)
       .then(function() {
         return params;
       }, function(err) {
         return new Promise(function (resolve, reject) {
+          self.logger.error("Invalid params: ", err, "params: ", params);
           reject({
               code: -32602,
               message: 'Invalid params',
@@ -62,9 +64,13 @@ JsonRpcMethod.prototype = {
       return resultData;
     }
     else {
+      var self = this;
       return validator.validate(resultData, this.schema.result)
       .then(function() {
         return resultData;
+      }, function(err) {
+        self.logger.error("Invalid response: ", err, "ResultData: ", resultData);
+        throw err;
       });
     }
   },
@@ -93,7 +99,7 @@ JsonRpcMethod.prototype = {
             });
           }
           catch(e) {
-              self.logger.error("On validate error: ", error,"; Catch error ", e);
+              self.logger.error("On validate error: ", error, "; Catch error ", e);
               internalError();
           }
       }
